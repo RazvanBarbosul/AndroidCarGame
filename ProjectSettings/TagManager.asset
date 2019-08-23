@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - UIDraggable
+  - UIDropPosition
+  - OponentsContainer
   layers:
   - Default
   - TransparentFX

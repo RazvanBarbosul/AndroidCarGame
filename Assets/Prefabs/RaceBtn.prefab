@@ -201,7 +201,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3658228640135291201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SetupOponetInfo
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1322220976950256986}
+          m_ObjectArgumentAssemblyTypeName: RaceButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: OnClickRaceButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1322220976950256986
@@ -217,6 +239,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScenesToLoad: 0100000002000000030000000400000005000000
+  Oponents:
+  - TopSpeed: 0
+    Acceleration: 0
+    Handling: 0
+    Drive: 
+    Tyres: 
+    CarImage: {fileID: 0}
+  - TopSpeed: 0
+    Acceleration: 0
+    Handling: 0
+    Drive: 
+    Tyres: 
+    CarImage: {fileID: 0}
+  - TopSpeed: 0
+    Acceleration: 0
+    Handling: 0
+    Drive: 
+    Tyres: 
+    CarImage: {fileID: 0}
+  - TopSpeed: 0
+    Acceleration: 0
+    Handling: 0
+    Drive: 
+    Tyres: 
+    CarImage: {fileID: 0}
+  - TopSpeed: 0
+    Acceleration: 0
+    Handling: 0
+    Drive: 
+    Tyres: 
+    CarImage: {fileID: 0}
   Btn: {fileID: 6231249039016760312}
-  ButtonSprite: {fileID: 21300000, guid: d06001ceac09b444f8eee66a3ff7e8d3, type: 3}
+  ButtonSprite: {fileID: 21300000, guid: 63634d69ff247284698fa5a001cf0a10, type: 3}
   ButtonImage: {fileID: 3658228640135291201}

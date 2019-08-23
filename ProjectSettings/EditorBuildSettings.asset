@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4b2c1590350b3d042a1e3dc5fc4985d7
   - enabled: 1
-    path: Assets/Scenes/DragAndMixed.unity
+    path: Assets/Scenes/G-Force Test.unity
     guid: 6496ead707a7b924b933c2aadf7945fb
   - enabled: 1
-    path: Assets/Scenes/DragRaceScene.unity
+    path: Assets/Scenes/Drag.unity
     guid: cb4390af1b0697c4daf2da8583f8421a
   - enabled: 1
-    path: Assets/Scenes/MixedCircuit.unity
+    path: Assets/Scenes/Test Circuit.unity
     guid: ceac666dd7d76a64f9c435994baa0534
   - enabled: 1
-    path: Assets/Scenes/ObstacleCourse.unity
+    path: Assets/Scenes/Obstacle Course.unity
     guid: 733173e0c6b47554f8c0b941aaf3ccd2
   - enabled: 1
-    path: Assets/Scenes/RoundScene.unity
+    path: Assets/Scenes/Square Road.unity
     guid: e64a956725beda84783d92f82d87360e
   m_configObjects: {}
