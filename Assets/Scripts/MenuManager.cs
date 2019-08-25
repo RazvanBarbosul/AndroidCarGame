@@ -17,6 +17,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private Canvas CarSelectionScreen;
 
+    public Button StartRacesButton;
+
 
     public void OnClickStartButton()
     {
@@ -32,6 +34,7 @@ public class MenuManager : MonoBehaviour
         WelcomeScreen.gameObject.SetActive(true);
         RaceSelectionScreen.gameObject.SetActive(false);
         CarSelectionScreen.gameObject.SetActive(false);
+        StartRacesButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

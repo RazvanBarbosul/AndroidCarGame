@@ -8,6 +8,7 @@ TagManager:
   - UIDraggable
   - UIDropPosition
   - OponentsContainer
+  - Oponent
   layers:
   - Default
   - TransparentFX

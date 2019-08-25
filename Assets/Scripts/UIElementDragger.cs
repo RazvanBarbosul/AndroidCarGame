@@ -13,11 +13,15 @@ public class UIElementDragger : MonoBehaviour
     private Transform ObjectToDrag;
     private Image ObjectToDragImage;
     List<RaycastResult> HitObjects = new List<RaycastResult>();
+    private GameManager GM;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(!GM)
+        {
+            GM = GameObject.FindObjectOfType<GameManager>();
+        }
     }
 
     // Update is called once per frame
@@ -120,28 +124,33 @@ public class UIElementDragger : MonoBehaviour
             if (DropPosition.tag == DROP_POSTION)
             {
                 ObjectToDrag.position = DropPosition.gameObject.transform.position;
+                ObjectToDrag.gameObject.GetComponent<CarButton>().AssignedDropPoint = DropPosition;
             }
             else if (DropPosition.tag == DRAGGABLE_TAG)
             {
                 ObjectToDrag.position = DropPosition.gameObject.transform.position;
                 DropPosition.gameObject.transform.position = DropPosition.GetComponent<CarButton>().OriginalPosition;
+                ObjectToDrag.gameObject.GetComponent<CarButton>().AssignedDropPoint = null;
             }
             else
             {
                 ObjectToDrag.position = OriginalPosition;
+                ObjectToDrag.gameObject.GetComponent<CarButton>().AssignedDropPoint = null;
             }
             ObjectToDragImage.raycastTarget = true;
             ObjectToDrag = null;
             Dragging = false;
+          
         }
         else
         {
             ObjectToDrag.position = OriginalPosition;
+            ObjectToDrag.gameObject.GetComponent<CarButton>().AssignedDropPoint = null;
             ObjectToDragImage.raycastTarget = true;
             ObjectToDrag = null;
             Dragging = false;
         }
-        
+        GM.CheckCars();
     }
 
 }

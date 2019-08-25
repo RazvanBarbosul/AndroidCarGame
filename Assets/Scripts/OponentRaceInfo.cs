@@ -49,4 +49,14 @@ public class OponentRaceInfo : MonoBehaviour
     {
         
     }
+
+    public void Setup()
+    {
+        this.GetComponent<Image>().overrideSprite = CarInfo.CarImage;
+        this.CarSpeed.SetText(CarInfo.TopSpeed.ToString());
+        this.CarAcceleration.SetText(CarInfo.Acceleration.ToString());
+        this.CarHandling.SetText(CarInfo.Handling.ToString());
+        this.CarDrive.SetText(CarInfo.Drive);
+        this.CarTyres.SetText(CarInfo.Tyres);
+    }
 }

@@ -35,6 +35,11 @@ public class CarButton : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI CarTyres;
+
+    [SerializeField]
+    int RacePosition;
+
+    public GameObject AssignedDropPoint;
     // Start is called before the first frame update
     void Start()
     {
