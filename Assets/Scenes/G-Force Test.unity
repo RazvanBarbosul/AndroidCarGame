@@ -241,6 +241,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FInishLine
       objectReference: {fileID: 0}
+    - target: {fileID: 4146258767754267000, guid: b68484eacd9ee3648ade4e6381d9e456,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4146258767754267004, guid: b68484eacd9ee3648ade4e6381d9e456,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -300,6 +305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 24.328983
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146258767754267001, guid: b68484eacd9ee3648ade4e6381d9e456,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68484eacd9ee3648ade4e6381d9e456, type: 3}

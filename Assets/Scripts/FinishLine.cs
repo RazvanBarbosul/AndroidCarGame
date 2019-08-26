@@ -8,8 +8,9 @@ public class FinishLine : MonoBehaviour
     private GameManager GM;
     private bool bPlayerWon = false;
     private bool bOponentWon = false;
-    private bool bRaceEnded = false;
+    public bool bRaceEnded = false;
     private int RacersPassed = 0;
+    private string PreviousRacer;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +30,11 @@ public class FinishLine : MonoBehaviour
     {
         if (bPlayerWon && !bRaceEnded && !bOponentWon)
         {
-            GM.PlayerScore += (int)Time.deltaTime;
+            GM.PlayerScore += (int)Time.deltaTime * 100;
         }
         else if(bOponentWon && !bRaceEnded && !bPlayerWon)
         {
-            GM.OponentScore += (int)Time.deltaTime;
+            GM.OponentScore += (int)Time.deltaTime * 100;
         }
 
         if(!bPlayerWon && GM.bRaceStarted)
@@ -54,26 +55,29 @@ public class FinishLine : MonoBehaviour
             GM = GameObject.FindObjectOfType<GameManager>();
         }
 
-        if(other.tag == "Player" || other.tag == "Oponent")
+        if((other.tag == "Player" || other.tag == "Oponent") && PreviousRacer != other.tag)
         {
+            PreviousRacer = other.tag;
             RacersPassed++;
         }
 
-        if (RacersPassed == 2)
+        if (RacersPassed == 2 && !bRaceEnded)
         {
             bRaceEnded = true;
             GM.ShowWaitScreen(bPlayerWon);
         }
 
-        if (other.tag == "Player" && !bOponentWon &&!bRaceEnded)
+        if (other.tag == "Player" && !bOponentWon &&!bRaceEnded &&!bPlayerWon)
         {
             GM.PlayerScore += 50;
             bPlayerWon = true;
+            //other.gameObject.GetComponent<UnityStandardAssets.Vehicles.Car.CarController>().m_Topspeed = 0;
         }
-        else if(other.tag == "Oponent" && !bPlayerWon && !bRaceEnded)
+        else if(other.tag == "Oponent" && !bPlayerWon && !bRaceEnded && !bOponentWon)
         {
             GM.OponentScore += 50;
             bOponentWon = true;
+            //other.gameObject.GetComponent<UnityStandardAssets.Vehicles.Car.CarController>().m_Topspeed = 0;
         }
 
         

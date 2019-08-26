@@ -812,11 +812,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3315281810358168805, guid: 3f18036181b44a04aa1c3cf25139eadc,
-        type: 3}
-      propertyPath: m_Topspeed
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3315281810358168809, guid: 3f18036181b44a04aa1c3cf25139eadc,
         type: 3}
       propertyPath: circuit
@@ -1213,11 +1208,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 529604468292257774, guid: 11ec6b1cc2cb6884e94ce0f212ebc0d5,
-        type: 3}
-      propertyPath: m_Topspeed
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 529604468292257762, guid: 11ec6b1cc2cb6884e94ce0f212ebc0d5,
         type: 3}
       propertyPath: circuit
@@ -1242,6 +1232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FInishLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146258767754267000, guid: b68484eacd9ee3648ade4e6381d9e456,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4146258767754267004, guid: b68484eacd9ee3648ade4e6381d9e456,
         type: 3}
@@ -1302,6 +1297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 22.29699
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146258767754267001, guid: b68484eacd9ee3648ade4e6381d9e456,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68484eacd9ee3648ade4e6381d9e456, type: 3}

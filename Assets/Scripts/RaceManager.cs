@@ -21,21 +21,21 @@ public class RaceManager : MonoBehaviour
     {
     }
 
-    public void SetupCars(CarButton PlayerCarInfo, OponentRaceInfo OponentCarInfo)
+    public void SetupCars(GameManager.CarStats PlayerCarInfo, GameManager.CarStats OponentCarInfo)//(CarButton PlayerCarInfo, OponentRaceInfo OponentCarInfo)
     {
-        if(PlayerCarInfo && OponentCarInfo)
-        {
+        //if(PlayerCarInfo && OponentCarInfo)
+        //{
             #region PlayerCarSetup
             //Acceleration
-            float Diff = (10.0f - PlayerCarInfo.CarInfo.Acceleration) / 0.7f * 100.0f;
+            float Diff = (10.0f - PlayerCarInfo.Acceleration) / 0.7f * 100.0f;
             PlayerCar.GetComponent<CarController>().m_FullTorqueOverAllWheels = 3000 + Diff;
 
             //Drive
-            if(PlayerCarInfo.CarInfo.Drive == "FWD")
+            if(PlayerCarInfo.Drive == "FWD")
             {
                 PlayerCar.GetComponent<CarController>().m_CarDriveType = CarDriveType.FrontWheelDrive;
             }
-            else if(PlayerCarInfo.CarInfo.Drive == "RWD")
+            else if(PlayerCarInfo.Drive == "RWD")
             {
                 PlayerCar.GetComponent<CarController>().m_CarDriveType = CarDriveType.RearWheelDrive;
             }
@@ -45,20 +45,20 @@ public class RaceManager : MonoBehaviour
             }
 
             //Handling
-            PlayerCar.GetComponent<CarController>().m_SteerHelper = PlayerCarInfo.CarInfo.Handling / 10;
+           // PlayerCar.GetComponent<CarController>().m_SteerHelper = PlayerCarInfo.Handling / 10;
             #endregion
 
             #region OponentCarSetup
             //Acceleration
-            Diff = (10.0f - OponentCarInfo.CarInfo.Acceleration) / 0.7f * 100.0f;
+            Diff = (10.0f - OponentCarInfo.Acceleration) / 0.7f * 100.0f;
             OponentCar.GetComponent<CarController>().m_FullTorqueOverAllWheels = 3000 + Diff;
 
             //Drive
-            if (OponentCarInfo.CarInfo.Drive == "FWD")
+            if (OponentCarInfo.Drive == "FWD")
             {
                 OponentCar.GetComponent<CarController>().m_CarDriveType = CarDriveType.FrontWheelDrive;
             }
-            else if (OponentCarInfo.CarInfo.Drive == "RWD")
+            else if (OponentCarInfo.Drive == "RWD")
             {
                 OponentCar.GetComponent<CarController>().m_CarDriveType = CarDriveType.RearWheelDrive;
             }
@@ -68,34 +68,34 @@ public class RaceManager : MonoBehaviour
             }
 
             //Handling
-            OponentCar.GetComponent<CarController>().m_SteerHelper = OponentCarInfo.CarInfo.Handling / 10;
+           // OponentCar.GetComponent<CarController>().m_SteerHelper = OponentCarInfo.Handling / 10;
             #endregion
-        }
+       // }
 
         StartRace(PlayerCarInfo, OponentCarInfo);
     }
 
-    void StartRace(CarButton PlayerCarInfo, OponentRaceInfo OponentCarInfo)
+    void StartRace(GameManager.CarStats PlayerCarInfo, GameManager.CarStats OponentCarInfo)
     {
-        if(PlayerCarInfo && OponentCarInfo)
-        {
-            PlayerCar.GetComponent<CarController>().m_Topspeed = PlayerCarInfo.CarInfo.TopSpeed;
-            OponentCar.GetComponent<CarController>().m_Topspeed = OponentCarInfo.CarInfo.TopSpeed;
+        //if(PlayerCarInfo && OponentCarInfo)
+        //{
+            PlayerCar.GetComponent<CarController>().m_Topspeed = PlayerCarInfo.TopSpeed;
+            OponentCar.GetComponent<CarController>().m_Topspeed = OponentCarInfo.TopSpeed;
             StartCoroutine(AssignEndPoint());
-        }
+       // }
     }
 
     IEnumerator AssignEndPoint()
     {
         yield return new WaitForSeconds(5);
-        PlayerCar.GetComponent<CarAIControl>().m_Target = RaceEnd;
-        PlayerCar.GetComponent<CarAIControl>().m_StopWhenTargetReached = true;
-        
+        //PlayerCar.GetComponent<CarAIControl>().m_Target = RaceEnd;
+        //PlayerCar.GetComponent<CarAIControl>().m_StopWhenTargetReached = true;
 
-        OponentCar.GetComponent<CarAIControl>().m_Target = RaceEnd;
-        OponentCar.GetComponent<CarAIControl>().m_StopWhenTargetReached = true;
 
-        FinishLine.GetComponent<FinishLine>().FinishColider.gameObject.SetActive(true);
+        //OponentCar.GetComponent<CarAIControl>().m_Target = RaceEnd;
+        //OponentCar.GetComponent<CarAIControl>().m_StopWhenTargetReached = true;
+        FinishLine.gameObject.SetActive(true);
+       // FinishLine.GetComponent<FinishLine>().FinishColider.gameObject.SetActive(true);
     }
 
    
