@@ -9,6 +9,7 @@ public class RaceManager : MonoBehaviour
     public GameObject PlayerCar;
     public GameObject OponentCar;
     public Transform RaceEnd;
+    private GameManager GM;
     public GameObject FinishLine;
     
     // Start is called before the first frame update
@@ -67,11 +68,20 @@ public class RaceManager : MonoBehaviour
                 OponentCar.GetComponent<CarController>().m_CarDriveType = CarDriveType.FourWheelDrive;
             }
 
-            //Handling
-           // OponentCar.GetComponent<CarController>().m_SteerHelper = OponentCarInfo.Handling / 10;
-            #endregion
-       // }
+        //Handling
+        // OponentCar.GetComponent<CarController>().m_SteerHelper = OponentCarInfo.Handling / 10;
+        #endregion
+        // }
 
+        if (!GM)
+        {
+            GM = GameObject.FindObjectOfType<GameManager>();
+        }
+
+        if (GM)
+        {
+            GM.UpdateInGameUI();
+        }
         StartRace(PlayerCarInfo, OponentCarInfo);
     }
 

@@ -9,6 +9,7 @@ TagManager:
   - UIDropPosition
   - OponentsContainer
   - Oponent
+  - PlayerTagContainer
   layers:
   - Default
   - TransparentFX

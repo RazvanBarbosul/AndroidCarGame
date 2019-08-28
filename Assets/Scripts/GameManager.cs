@@ -54,9 +54,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Canvas WaitScreen;
 
+    [SerializeField]
+    private Canvas InGameScreen;
+
+    [SerializeField]
+    TextMeshProUGUI PlayerSpeedText;
+
+    [SerializeField]
+    TextMeshProUGUI OponentSpeedText;
+
     public OponentRaceInfo PlayerRaceInfo;
     public OponentRaceInfo OponentRaceInfo;
 
+    public OponentRaceInfo InGamePlayerRaceInfo;
+    public OponentRaceInfo InGameOponentRaceInfo;
     public static GameManager Get()
     {
         return Instance;
@@ -98,6 +109,19 @@ public class GameManager : MonoBehaviour
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && bRaceStarted && FL.bRaceEnded)
             {
                 OnClickStartBtn();
+            }
+        }
+
+        if (bRaceStarted)
+        {
+            RaceManager RaceGuru = GameObject.FindObjectOfType<RaceManager>();
+
+            if (RaceGuru)
+            {
+                int PlayerSp = (int)(RaceGuru.PlayerCar.GetComponent<CarController>().CurrentSpeed);
+                int OponentSp = (int)(RaceGuru.OponentCar.GetComponent<CarController>().CurrentSpeed);
+                PlayerSpeedText.SetText(PlayerSp.ToString() + "MPH");
+                OponentSpeedText.SetText(OponentSp.ToString() + "MPH");
             }
         }
     }
@@ -150,6 +174,11 @@ public class GameManager : MonoBehaviour
 
         int StatsIndex = 0;
 
+        if (!PlayerCarContainer)
+        {
+            PlayerCarContainer = GameObject.FindGameObjectWithTag("PlayerTagContainer");
+        }
+
         for(int i = 0; i < PlayerCarContainer.transform.childCount; i++)
         {
             GameObject Temp = PlayerCarContainer.transform.GetChild(i).gameObject;
@@ -199,6 +228,8 @@ public class GameManager : MonoBehaviour
     public void ShowWaitScreen(bool bPlayerWon)
     {
         WaitScreen.gameObject.SetActive(true);
+        InGameScreen.gameObject.SetActive(false);
+        
         PlayerScoreText.SetText(PlayerScore.ToString());
         OponentScoreText.SetText(OponentScore.ToString());
 
@@ -217,6 +248,8 @@ public class GameManager : MonoBehaviour
         PlayerRaceInfo.CarInfo.Tyres = PlayerCarsStats[CurrentLoadedSceneIndex].Tyres;
 
         PlayerRaceInfo.Setup();
+       
+
         OponentRaceInfo.CarInfo.Acceleration = OponentCarStats[CurrentLoadedSceneIndex].Acceleration;//RaceInformations[CurrentLoadedSceneIndex];
         OponentRaceInfo.CarInfo.CarImage = OponentCarStats[CurrentLoadedSceneIndex].CarImage;
         OponentRaceInfo.CarInfo.Drive = OponentCarStats[CurrentLoadedSceneIndex].Drive;
@@ -224,6 +257,7 @@ public class GameManager : MonoBehaviour
         OponentRaceInfo.CarInfo.TopSpeed = OponentCarStats[CurrentLoadedSceneIndex].TopSpeed;
         OponentRaceInfo.CarInfo.Tyres = OponentCarStats[CurrentLoadedSceneIndex].Tyres;
         OponentRaceInfo.Setup();
+       
 
         if(bPlayerWon)
         {
@@ -246,12 +280,17 @@ public class GameManager : MonoBehaviour
     public void HideWaitScreen()
     {
         WaitScreen.gameObject.SetActive(false);
+        InGameScreen.gameObject.SetActive(true);
     }
 
     public void StartRace(int RaceNum)
     {
         if(RaceNum < ScenesToLoad.Length - 1)
         {
+            InGameOponentRaceInfo.gameObject.SetActive(false);
+            InGamePlayerRaceInfo.gameObject.SetActive(false);
+            PlayerSpeedText.gameObject.SetActive(false);
+            OponentSpeedText.gameObject.SetActive(false);
             SceneManager.LoadScene(ScenesToLoad[RaceNum]);
             //RaceManager RaceGuru = GameObject.FindObjectOfType<RaceManager>();
 
@@ -288,6 +327,28 @@ public class GameManager : MonoBehaviour
             CarStats Oponent = OponentCarStats[CurrentLoadedSceneIndex];
             RaceGuru.SetupCars(Player, Oponent);
             bRaceStarted = true;
+
+            InGamePlayerRaceInfo.gameObject.SetActive(true);
+            InGamePlayerRaceInfo.CarInfo.CarImage = Player.CarImage;
+            InGamePlayerRaceInfo.CarInfo.Acceleration = Player.Acceleration;
+            InGamePlayerRaceInfo.CarInfo.Drive = Player.Drive;
+            InGamePlayerRaceInfo.CarInfo.Handling = Player.Handling;
+            InGamePlayerRaceInfo.CarInfo.TopSpeed = Player.TopSpeed;
+            InGamePlayerRaceInfo.CarInfo.Tyres = Player.Tyres;
+
+            InGamePlayerRaceInfo.Setup();
+
+            InGameOponentRaceInfo.gameObject.SetActive(true);
+            InGameOponentRaceInfo.CarInfo.Acceleration = Oponent.Acceleration;//RaceInformations[CurrentLoadedSceneIndex];
+            InGameOponentRaceInfo.CarInfo.CarImage = Oponent.CarImage;
+            InGameOponentRaceInfo.CarInfo.Drive = Oponent.Drive;
+            InGameOponentRaceInfo.CarInfo.Handling = Oponent.Handling;
+            InGameOponentRaceInfo.CarInfo.TopSpeed = Oponent.TopSpeed;
+            InGameOponentRaceInfo.CarInfo.Tyres = Oponent.Tyres;
+            InGameOponentRaceInfo.Setup();
+            PlayerSpeedText.gameObject.SetActive(true);
+            OponentSpeedText.gameObject.SetActive(true);
+            InGameScreen.gameObject.SetActive(true);
         }
         CurrentLoadedSceneIndex++;
     }
@@ -297,4 +358,17 @@ public class GameManager : MonoBehaviour
         HideWaitScreen();
         StartRace(CurrentLoadedSceneIndex);
     }
+
+    public void UpdateInGameUI()
+    {
+        RaceManager RaceGuru = GameObject.FindObjectOfType<RaceManager>();
+
+        if (RaceGuru)
+        {
+            CarStats Player = PlayerCarsStats[CurrentLoadedSceneIndex];
+            CarStats Oponent = OponentCarStats[CurrentLoadedSceneIndex];
+
+           
+        }
+       }
 }
